@@ -3,11 +3,11 @@
 
 # ==== Definitions ====
 
-BINDIR = bin
+TMPDIR = tmp
 SOURCEDIR = src
 RELDIR = rel
 COMP = gcc
-BINOBJS = ${BINDIR}/demo.o
+BINOBJS = ${TMPDIR}/demo.o
 COMPFLAGS = -g -Wall
 LINKFLAGS = -lrt -lpthread
 MAIN = ${RELDIR}/demo
@@ -23,11 +23,11 @@ all: $(MAIN)
 
 .PHONY: clean
 clean:
-	rm -rf $(BINDIR) $(RELDIR) $(MAIN)
+	rm -rf $(TMPDIR) $(RELDIR) $(MAIN)
 
 # ==== Targets ====
 
-${BINDIR}/%.o: ${SOURCEDIR}/%.c
+${TMPDIR}/%.o: ${SOURCEDIR}/%.c
 	mkdir -p $(@D)
 	$(COMP) -c $< -o $@ $(COMPFLAGS)
 
